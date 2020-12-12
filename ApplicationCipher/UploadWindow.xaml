@@ -1,0 +1,14 @@
+﻿<Window x:Class="ApplicationCipher.UploadWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ApplicationCipher"
+        mc:Ignorable="d"
+        Title="UploadWindow" Height="179.255" Width="344.118">
+    <Grid>
+        <TextBox HorizontalAlignment="Left" Height="42" TextWrapping="Wrap" BorderThickness="0"  IsReadOnly="True" Text="Would you like to download a file or to upload it from the local computer?"  VerticalAlignment="Top" Width="267" Margin="38,21,-305,-63"/>
+        <Button Content="Download" Click="Download_Click" HorizontalAlignment="Left" Height="33" Margin="38,80,-133,-113" VerticalAlignment="Top" Width="95"/>
+        <Button Content="Upload" Click="Upload_Click" HorizontalAlignment="Left" Height="33" Margin="201,80,-296,-113" VerticalAlignment="Top" Width="95"/>
+    </Grid>
+</Window>
