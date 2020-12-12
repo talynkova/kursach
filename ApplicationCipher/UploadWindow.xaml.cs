@@ -40,13 +40,12 @@ namespace ApplicationCipher
             {
                 fileContent = null;
                 OpenFileDialog OPF = new OpenFileDialog();
-                OPF.ShowDialog();              
-                OPF.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+                OPF.ShowDialog();
+                OPF.Filter = "Text files (*.txt)|*.txt| All files (*.*)|*.*";
                 fileName = OPF.FileName;
                 Encoding win1251 = Encoding.GetEncoding("windows-1251");
                 fileContent = File.ReadAllText(fileName, win1251);
-              
-                if (String.IsNullOrWhiteSpace(fileContent)) MessageBox.Show("This file is empty");
+                if (new FileInfo(fileName).Length == 0) MessageBox.Show("This file is empty");
                 else
                 {
                     KeyForm form3 = new KeyForm();
@@ -71,19 +70,18 @@ namespace ApplicationCipher
             {
                if (File.Exists(path)) File.Delete(path);
                 WebClient wc = new WebClient();
-                wc.DownloadFileAsync(new Uri(link), path);
-                if (File.Exists(path) && new FileInfo(path).Length != 0)
+                wc.DownloadFile(new Uri(link), path);
+                if (File.Exists(path)&& new FileInfo(path).Length!=0)
                 {
                     Encoding win1251 = Encoding.GetEncoding("windows-1251");
                     fileContent = File.ReadAllText(path, win1251);
-
-                    KeyForm form4 = new KeyForm();
+                KeyForm form4 = new KeyForm();
                     form4.ShowDialog();
                     result = MainWindow.Decrypt(fileContent, MainWindow.key);
                     Close();
                 }
 
-                if (String.IsNullOrWhiteSpace(fileContent)) MessageBox.Show("This file is empty");
+                if (new FileInfo(path).Length == 0) MessageBox.Show("This file is empty");
               
             }
             catch (WebException)
